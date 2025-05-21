@@ -47,7 +47,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     async function fetchPromptResponse(userPrompt, fileContent) {
-        const apiKey = await loadApiKey();
+//        const apiKey = await loadApiKey();
+        const apiKey = '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';
         const apiUrl = `https://api.openai.com/v1/chat/completions`;
 
         const response = await fetch(apiUrl, {
