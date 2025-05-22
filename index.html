@@ -2,16 +2,53 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>WebChatGPT-02</title>
   <script defer src="scriptOpenAI.js"></script>
   <style>
-    body { font-family: sans-serif; padding: 20px; max-width: 600px; margin: auto; }
-    label, input, textarea, button { display: block; margin-top: 15px; width: 100%; }
-    #status { margin-top: 20px; font-weight: bold; color: green; }
-    #response { margin-top: 15px; white-space: pre-wrap; border: 1px solid #ccc; padding: 10px; background: #f9f9f9; }
-    #promptHistory, #fileList { margin-top: 30px; padding: 10px; background: #f1f1f1; border-radius: 5px; }
-    h2 { font-size: 1.1em; margin-top: 30px; }
-    ul { padding-left: 20px; }
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      padding: 20px;
+      margin: 0;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    label, input, textarea, button, h1, h2, div, ul, li {
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+    label, input, textarea, button {
+      display: block;
+      margin-top: 15px;
+      width: 100%;
+    }
+    #status {
+      margin-top: 20px;
+      font-weight: bold;
+      color: green;
+    }
+    #response {
+      margin-top: 15px;
+      white-space: pre-wrap;
+      border: 1px solid #ccc;
+      padding: 10px;
+      background: #f9f9f9;
+    }
+    #promptHistory, #fileList {
+      margin-top: 30px;
+      padding: 10px;
+      background: #f1f1f1;
+      border-radius: 5px;
+    }
+    h2 {
+      font-size: 1.1em;
+      margin-top: 30px;
+    }
+    ul {
+      padding-left: 20px;
+    }
   </style>
 </head>
 <body>
