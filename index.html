@@ -2,7 +2,18 @@
 <html>
 <head>
 <title>Visualizador de Markdown</title>
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>  </head>
+<style>
+  #markdownOutput {
+    font-size: 16px; /* Tamanho padrão */
+  }
+  @media (max-width: 768px) { /* Para telas menores que 768px (tablets e smartphones) */
+    #markdownOutput {
+      font-size: 18px; /* Aumenta o tamanho da fonte */
+    }
+  }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
 <body>
   <h1>Visualizador de Markdown</h1>
   <input type="file" id="fileInput" accept=".md">
