@@ -2,15 +2,25 @@
 <html>
 <head>
 <title>Visualizador de Markdown</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
+  body {
+    font-family: sans-serif;
+    margin: 1em;
+  }
+  h1 {
+    font-size: 1.5em;
+  }
+  #fileInput {
+    padding: 0.5em;
+    font-size: 1em;
+  }
   #markdownOutput {
-    font-size: 16px; /* Tamanho padrão */
+    font-size: 1em;
+    line-height: 1.6;
+    margin-top: 1em;
   }
-  @media (max-width: 768px) { /* Para telas menores que 768px (tablets e smartphones) */
-    #markdownOutput {
-      font-size: 18px; /* Aumenta o tamanho da fonte */
-    }
-  }
+@media (max-width: 768px) { body { margin: 0.5em; } h1 { font-size: 1.2em; } #fileInput { font-size: 1.2em; padding: 0.7em; } #markdownOutput { font-size: 1.2em; } }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
