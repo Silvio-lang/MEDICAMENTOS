@@ -1,2 +1,2 @@
-# papo2amigos
-Chat com AI simulando
+# Leitura renderizada MarkDown
+(estamos em manutenção)
