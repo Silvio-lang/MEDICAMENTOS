@@ -416,4 +416,5 @@ function filtrarTabela() {
             linha.style.display = 'none';
         }
     });
+
 }
