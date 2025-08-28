@@ -121,6 +121,7 @@ function exportarDadosJSON() {
   downloadAnchorNode.remove();
   alert("Arquivo exportado. Edite no formato `{ valor: xx.xx, data: 'MM/AA' }` (ex.: `{ valor: 25.00, data: '09/25' }`). Não use 'MM/AA: R$ xx.xx'.");
 }
+
 function importarDadosJSON(event) {
     const file = event.target.files[0];
     if (!file) return;
@@ -191,7 +192,7 @@ function renderizarTabela() {
     tabelaBody.innerHTML = '';
 
     if (medicamentos.length === 0) {
-        tabelaBody.innerHTML = '<tr><td colspan="4">Nenhum medicamento cadastrado ainda.</td></tr>';
+        tabelaBody.innerHTML = '<tr><td colspan="3">Nenhum medicamento cadastrado ainda.</td></tr>';
         return;
     }
 
@@ -209,7 +210,7 @@ function renderizarTabela() {
                     const [mB, aB] = p2.data.split('/').map(Number);
                     return (aA * 100 + mA) - (aB * 100 + mB);
                 })[a.precos.length - 1].valor : 0;
-                const precoB = b.precos.length> 0 ? b.precos.slice().sort((p1, p2) => {
+                const precoB = b.precos.length > 0 ? b.precos.slice().sort((p1, p2) => {
                     const [mA, aA] = p1.data.split('/').map(Number);
                     const [mB, aB] = p2.data.split('/').map(Number);
                     return (aA * 100 + mA) - (aB * 100 + mB);
@@ -268,20 +269,6 @@ function renderizarTabela() {
         const ultimoPrecoObj = precosOrdenadosInternos.length > 0 ? precosOrdenadosInternos[precosOrdenadosInternos.length - 1] : null;
         const ultimoPrecoStr = ultimoPrecoObj ? `${formatarDataParaExibicao(ultimoPrecoObj.data)}: R$ ${ultimoPrecoObj.valor.toFixed(2)}   ` : 'N/A';
         row.insertCell(2).textContent = ultimoPrecoStr;
-
-        // Ações
-        const cellAcoes = row.insertCell(3);
-        const btnEditar = document.createElement('button');
-        btnEditar.textContent = 'Editar';
-        btnEditar.classList.add('edit-btn');
-        btnEditar.onclick = () => editarMedicamento(originalIndex);
-        cellAcoes.appendChild(btnEditar);
-
-        const btnExcluir = document.createElement('button');
-        btnExcluir.textContent = 'Excluir';
-        btnExcluir.classList.add('delete-btn');
-        btnExcluir.onclick = () => excluirMedicamento(originalIndex);
-        cellAcoes.appendChild(btnExcluir);
     });
 }
 
@@ -370,8 +357,6 @@ function adicionarOuAtualizarMedicamento() {
         }
 
         editandoMedicamentoIndex = -1;
-        document.getElementById('cancelarEdicaoBtn').style.display = 'none';
-        document.querySelector('.form-section button').textContent = 'Adicionar/Atualizar';
     } else {
         const medicamentoExistente = medicamentos.find(med => med.nome.toLowerCase() === nome.toLowerCase());
 
@@ -417,46 +402,6 @@ function adicionarOuAtualizarMedicamento() {
     precoInput.value = '';
     dataInput.value = '';
     nomeInput.focus();
-}
-
-function editarMedicamento(index) {
-    const med = medicamentos[index];
-    document.getElementById('medicamentoNome').value = med.nome;
-
-    const precosOrdenadosInternos = [...med.precos].sort((a, b) => {
-        const [mA, aA] = a.data.split('/').map(Number);
-        const [mB, aB] = b.data.split('/').map(Number);
-        return (aA * 100 + mA) - (aB * 100 + mB);
-    });
-    const ultimoPrecoObj = precosOrdenadosInternos.length > 0 ? precosOrdenadosInternos[precosOrdenadosInternos.length - 1] : { valor: '', data: '' };
-
-    document.getElementById('medicamentoPreco').value = ultimoPrecoObj.valor;
-    document.getElementById('medicamentoData').value = ultimoPrecoObj.data;
-
-    editandoMedicamentoIndex = index;
-    document.querySelector('.form-section button').textContent = 'Atualizar Medicamento';
-    document.getElementById('cancelarEdicaoBtn').style.display = 'inline-block';
-    document.getElementById('medicamentoData').focus();
-}
-
-function cancelarEdicao() {
-    editandoMedicamentoIndex = -1;
-    document.getElementById('medicamentoNome').value = '';
-    document.getElementById('medicamentoPreco').value = '';
-    document.getElementById('medicamentoData').value = '';
-    document.querySelector('.form-section button').textContent = 'Adicionar/Atualizar';
-    document.getElementById('cancelarEdicaoBtn').style.display = 'none';
-    document.getElementById('medicamentoNome').focus();
-}
-
-function excluirMedicamento(index) {
-    if (confirm(`Tem certeza que deseja excluir "${medicamentos[index].nome}" e todo o seu histórico de preços?`)) {
-        medicamentos.splice(index, 1);
-        salvarMedicamentos();
-        renderizarTabela();
-        atualizarDatalist();
-        cancelarEdicao();
-    }
 }
 
 function filtrarTabela() {
