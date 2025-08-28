@@ -61,65 +61,54 @@ function salvarMedicamentos() {
 
 // --- Funções de Exportação/Importação JSON ---
 function importarDadosJSON(event) {
-  const file = event.target.files[0];
-  if (file) {
-    const reader = new FileReader();
-    reader.onload = function(e) {
-      try {
-        const dados = JSON.parse(e.target.result);
-        console.log("Conteúdo do arquivo lido:", dados);
-        let medicamentos = JSON.parse(localStorage.getItem('medicamentos')) || [];
-        console.log("Dados após parsing:", dados);
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            try {
+                const dados = JSON.parse(e.target.result);
+                console.log("Conteúdo do arquivo lido:", dados);
 
-        // Substituir medicamentos existentes pelo conteúdo importado
-        medicamentos = dados.map(novoMed => {
-          const medExistente = medicamentos.find(m => m.nome === novoMed.nome);
-          if (medExistente) {
-            return { nome: novoMed.nome, precos: novoMed.precos };
-          }
-          return novoMed;
-        });
+                // Substituir completamente os dados existentes pelo conteúdo importado
+                medicamentos = dados;
 
-        // Adicionar medicamentos novos (não existentes)
-        dados.forEach(novoMed => {
-          if (!medicamentos.some(m => m.nome === novoMed.nome)) {
-            medicamentos.push(novoMed);
-          }
-        });
+                // Validar formato de datas
+                const dataValida = /^(0[1-9]|1[0-2])\/[0-9]{2}$/;
+                for (let med of medicamentos) {
+                    if (!med.nome || !Array.isArray(med.precos)) {
+                        throw new Error(`Formato inválido em ${med.nome || 'medicamento sem nome'}: cada medicamento deve ter nome e array de preços.`);
+                    }
+                    for (let preco of med.precos) {
+                        if (!preco.valor || !preco.data || !dataValida.test(preco.data)) {
+                            throw new Error(`Formato de data inválido em ${med.nome}: ${preco.data}. Use 'MM/AA'.`);
+                        }
+                    }
+                }
 
-        // Validar formato de datas
-        const dataValida = /^(0[1-9]|1[0-2])\/[0-9]{2}$/;
-        for (let med of medicamentos) {
-          for (let preco of med.precos) {
-            if (!dataValida.test(preco.data)) {
-              throw new Error(`Formato de data inválido em ${med.nome}: ${preco.data}. Use 'MM/AA'.`);
+                localStorage.setItem('medicamentos', JSON.stringify(medicamentos));
+                console.log("Dados após importação:", medicamentos);
+                renderizarTabela();
+                atualizarDatalist();
+                alert("Dados importados com sucesso!");
+            } catch (error) {
+                console.log("Erro ao importar:", error.message);
+                alert(`Erro ao importar arquivo: ${error.message}`);
             }
-          }
-        }
-
-        localStorage.setItem('medicamentos', JSON.stringify(medicamentos));
-        console.log("Dados após importação:", medicamentos);
-        renderizarTabela();
-        alert("Dados importados com sucesso!");
-      } catch (error) {
-        console.log("Erro ao importar:", error.message);
-        alert(`Erro ao importar arquivo: ${error.message}`);
-      }
-    };
-    reader.readAsText(file);
-  }
+        };
+        reader.readAsText(file);
+    }
 }
 
 function exportarDadosJSON() {
-  const medicamentos = JSON.parse(localStorage.getItem('medicamentos')) || [];
-  const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(medicamentos, null, 2));
-  const downloadAnchorNode = document.createElement('a');
-  downloadAnchorNode.setAttribute("href", dataStr);
-  downloadAnchorNode.setAttribute("download", "medicamentos.json");
-  document.body.appendChild(downloadAnchorNode);
-  downloadAnchorNode.click();
-  downloadAnchorNode.remove();
-  alert("Arquivo exportado. Edite no formato `{ valor: xx.xx, data: 'MM/AA' }` (ex.: `{ valor: 25.00, data: '09/25' }`). Não use 'MM/AA: R$ xx.xx'.");
+    const medicamentos = JSON.parse(localStorage.getItem('medicamentos')) || [];
+    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(medicamentos, null, 2));
+    const downloadAnchorNode = document.createElement('a');
+    downloadAnchorNode.setAttribute("href", dataStr);
+    downloadAnchorNode.setAttribute("download", "medicamentos.json");
+    document.body.appendChild(downloadAnchorNode);
+    downloadAnchorNode.click();
+    downloadAnchorNode.remove();
+    alert("Arquivo exportado. Edite no formato `{ valor: xx.xx, data: 'MM/AA' }` (ex.: `{ valor: 25.00, data: '09/25' }`). Não use 'MM/AA: R$ xx.xx'.");
 }
 
 function importarDadosJSON(event) {
@@ -145,21 +134,8 @@ function importarDadosJSON(event) {
                 }
             }
 
-            dadosImportados.forEach(medImportado => {
-                const medExistente = medicamentos.find(m => m.nome.toLowerCase() === medImportado.nome.toLowerCase());
-                if (medExistente) {
-                    medImportado.precos.forEach(precoNovo => {
-                        const precoDuplicado = medExistente.precos.some(
-                            p => p.data === precoNovo.data && p.valor === precoNovo.valor
-                        );
-                        if (!precoDuplicado) {
-                            medExistente.precos.push(precoNovo);
-                        }
-                    });
-                } else {
-                    medicamentos.push(medImportado);
-                }
-            });
+            // Substituir completamente os dados existentes
+            medicamentos = dadosImportados;
 
             salvarMedicamentos();
             renderizarTabela();
@@ -212,7 +188,7 @@ function renderizarTabela() {
                 })[a.precos.length - 1].valor : 0;
                 const precoB = b.precos.length > 0 ? b.precos.slice().sort((p1, p2) => {
                     const [mA, aA] = p1.data.split('/').map(Number);
-                    const [mB, aB] = p2.data.split('/').map(Number);
+                    const [mB, aB] = b.data.split('/').map(Number);
                     return (aA * 100 + mA) - (aB * 100 + mB);
                 })[b.precos.length - 1].valor : 0;
                 valA = precoA;
@@ -416,5 +392,4 @@ function filtrarTabela() {
             linha.style.display = 'none';
         }
     });
-
 }
