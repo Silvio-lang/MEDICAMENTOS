@@ -29,7 +29,7 @@
             <div class="export-import-section">
                <button onclick="exportarDadosJSON()">Exportar JSON</button>
                <button onclick="document.getElementById('importarArquivo').click()">Importar JSON</button>
-               <input type="file" id="importarArquivo" accept=".json" style="display: none;" onchange="importarDadosJSON(event)">
+               <input type="file" id="importarArquivo" accept=".json" style="display: inline;" onchange="importarDadosJSON(event)">
             </div>
             <table id="tabelaMedicamentos">
     <thead>
@@ -49,4 +49,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
