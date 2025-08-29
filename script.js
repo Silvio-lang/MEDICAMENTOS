@@ -108,7 +108,7 @@ function exportarDadosJSON() {
     document.body.appendChild(downloadAnchorNode);
     downloadAnchorNode.click();
     downloadAnchorNode.remove();
-    alert("Arquivo exportado para pasta Downloads");
+    alert("Arquivo salvo na pasta de Downloads");
 }
 
 function importarDadosJSON(event) {
