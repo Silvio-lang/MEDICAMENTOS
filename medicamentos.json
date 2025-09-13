@@ -1,0 +1,336 @@
+[
+  {
+    "nome": "Citobe",
+    "precos": [
+      {
+        "valor": 71.29,
+        "data": "06/25"
+      },
+      {
+        "valor": 58.13,
+        "data": "08/25",
+        "comentario": "Farm.S.João, cx.com 30 comprimidos"
+      }
+    ]
+  },
+  {
+    "nome": "Rosuvastatina 20 60cp",
+    "precos": [
+      {
+        "valor": 65,
+        "data": "10/24"
+      },
+      {
+        "valor": 60,
+        "data": "11/24"
+      },
+      {
+        "valor": 68,
+        "data": "12/24"
+      },
+      {
+        "valor": 67.8,
+        "data": "01/25"
+      },
+      {
+        "valor": 95.8,
+        "data": "02/25"
+      },
+      {
+        "valor": 95.8,
+        "data": "03/25"
+      },
+      {
+        "valor": 89.8,
+        "data": "04/25"
+      },
+      {
+        "valor": 60.9,
+        "data": "05/25"
+      },
+      {
+        "valor": 33.69,
+        "data": "06/25"
+      },
+      {
+        "valor": 61.98,
+        "data": "07/25"
+      },
+      {
+        "valor": 29.35,
+        "data": "08/25"
+      }
+    ]
+  },
+  {
+    "nome": "Ezetimiba 10",
+    "precos": [
+      {
+        "valor": 35,
+        "data": "10/24"
+      },
+      {
+        "valor": 43.96,
+        "data": "11/24"
+      },
+      {
+        "valor": 43.9,
+        "data": "12/24"
+      },
+      {
+        "valor": 66.6,
+        "data": "01/25"
+      },
+      {
+        "valor": 0.01,
+        "data": "02/25"
+      },
+      {
+        "valor": 44.67,
+        "data": "03/25"
+      },
+      {
+        "valor": 44.29,
+        "data": "04/25"
+      },
+      {
+        "valor": 46.49,
+        "data": "05/25"
+      },
+      {
+        "valor": 89.9,
+        "data": "06/25"
+      },
+      {
+        "valor": 0.01,
+        "data": "07/25"
+      },
+      {
+        "valor": 73.5,
+        "data": "08/25"
+      }
+    ]
+  },
+  {
+    "nome": "Ramipril 5 mg",
+    "precos": [
+      {
+        "valor": 39,
+        "data": "10/24"
+      },
+      {
+        "valor": 47,
+        "data": "11/24"
+      },
+      {
+        "valor": 77.75,
+        "data": "12/24"
+      },
+      {
+        "valor": 77.75,
+        "data": "01/25"
+      },
+      {
+        "valor": 61.99,
+        "data": "02/25"
+      },
+      {
+        "valor": 66.98,
+        "data": "03/25"
+      },
+      {
+        "valor": 148.59,
+        "data": "04/25"
+      },
+      {
+        "valor": 0.01,
+        "data": "05/25"
+      },
+      {
+        "valor": 0.01,
+        "data": "06/25"
+      },
+      {
+        "valor": 0.01,
+        "data": "07/25"
+      },
+      {
+        "valor": 0.01,
+        "data": "08/25"
+      }
+    ]
+  },
+  {
+    "nome": "Aspirina",
+    "precos": [
+      {
+        "valor": 22,
+        "data": "10/24"
+      },
+      {
+        "valor": 58,
+        "data": "11/24"
+      },
+      {
+        "valor": 0.01,
+        "data": "12/24"
+      },
+      {
+        "valor": 0.01,
+        "data": "01/25"
+      },
+      {
+        "valor": 0.01,
+        "data": "02/25"
+      },
+      {
+        "valor": 0.01,
+        "data": "03/25"
+      },
+      {
+        "valor": 24.02,
+        "data": "02/25"
+      },
+      {
+        "valor": 19.34,
+        "data": "04/25"
+      },
+      {
+        "valor": 22.19,
+        "data": "05/25"
+      },
+      {
+        "valor": 22.19,
+        "data": "06/25"
+      },
+      {
+        "valor": 0.01,
+        "data": "07/25"
+      },
+      {
+        "valor": 20.42,
+        "data": "08/25"
+      }
+    ]
+  },
+  {
+    "nome": "DOSS 15000 U cx10",
+    "precos": [
+      {
+        "valor": 60,
+        "data": "10/24"
+      },
+      {
+        "valor": 49,
+        "data": "11/24"
+      },
+      {
+        "valor": 49,
+        "data": "12/24"
+      },
+      {
+        "valor": 59.9,
+        "data": "01/25"
+      },
+      {
+        "valor": 0.01,
+        "data": "02/25"
+      },
+      {
+        "valor": 76.14,
+        "data": "03/25"
+      },
+      {
+        "valor": 58.15,
+        "data": "04/25"
+      },
+      {
+        "valor": 58.64,
+        "data": "05/25"
+      },
+      {
+        "valor": 54,
+        "data": "06/25"
+      },
+      {
+        "valor": 62.83,
+        "data": "07/25"
+      }
+    ]
+  },
+  {
+    "nome": "Atenolol",
+    "precos": [
+      {
+        "valor": 10,
+        "data": "10/24"
+      },
+      {
+        "valor": 10,
+        "data": "11/24"
+      },
+      {
+        "valor": 10,
+        "data": "12/24"
+      },
+      {
+        "valor": 17.7,
+        "data": "01/25"
+      },
+      {
+        "valor": 4.79,
+        "data": "02/25"
+      },
+      {
+        "valor": 7.02,
+        "data": "03/25"
+      },
+      {
+        "valor": 14.9,
+        "data": "04/25"
+      },
+      {
+        "valor": 0.01,
+        "data": "05/25"
+      },
+      {
+        "valor": 15.59,
+        "data": "06/25"
+      },
+      {
+        "valor": 0.01,
+        "data": "07/25"
+      },
+      {
+        "valor": 17.09,
+        "data": "08/25"
+      }
+    ]
+  },
+  {
+    "nome": "Combodart",
+    "precos": [
+      {
+        "valor": 296,
+        "data": "12/24"
+      },
+      {
+        "valor": 296,
+        "data": "05/25"
+      }
+    ]
+  },
+  {
+    "nome": "Dorflex ou Nevralgex",
+    "precos": [
+      {
+        "valor": 11.2,
+        "data": "10/24"
+      },
+      {
+        "valor": 15.9,
+        "data": "05/25"
+      }
+    ]
+  }
+]
